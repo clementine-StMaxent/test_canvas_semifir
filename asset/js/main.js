@@ -5,21 +5,23 @@ var x = canvas.width / 2;
 var y = canvas.height - 30;
 var dx = 2;
 var dy = -50;
-
+var rot = 0
 
 
 function rectangle() {
     var ctx = canvas.getContext("2d");
     ctx.save();
-    ctx.translate(240, 120);
-    ctx.rotate(Math.PI / 4); // 45 degrees
+    ctx.translate(500, 500);
+    ctx.rotate(rot); // 45 degrees
+    ctx.translate(-500, -500)
+    rot += 0.01
         /*
     1ère valeur : largeur dans l'espace
     2ème valeur : hauteur dans l'espace
     3ème valeur : largeur du rectangle
     4ème valeur : longueur du rectangle
     */    
-    ctx.fillRect(460, 20, 30, 150);
+    ctx.fillRect(500, 500, 40, 20);
     ctx.fill();
     ctx.restore();
 }
@@ -27,7 +29,6 @@ function rectangle() {
 function drawBall() {
     ctx.beginPath();
     //dessiner la ligne de la fonction drawBall() :
-    ctx.arc(490, 490, 20, 0, ballRadius, 0, Math.PI * 2);
     ctx.arc(x, y, 10, 2 * Math.PI, false);
     // ctx.arc(100,100,20,0,2 * Math.PI);
     ctx.fillStyle = "red";
@@ -47,6 +48,7 @@ function drawPaddle() {
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     //nous déclarons les fonctions à afficher
+    setInterval(rectangle, 0.2);
     rectangle();
     drawBall();
     drawPaddle();
