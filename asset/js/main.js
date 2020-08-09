@@ -2,7 +2,7 @@ var canvas = document.getElementById("tutoriel");
 var ctx = canvas.getContext("2d");
 var ballRadius = 10;
 var x = canvas.width / 2;
-var y = canvas.height -500;
+var y = canvas.height - 500;
 var dx = 2;
 var dy = -50;
 var rot = 0
@@ -15,15 +15,22 @@ function rectangle() {
     ctx.rotate(rot); // 45 degrees
     ctx.translate(-500, -500)
     rot += 0.01
-        /*
-    1ère valeur : largeur dans l'espace
-    2ème valeur : hauteur dans l'espace
-    3ème valeur : largeur du rectangle
-    4ème valeur : longueur du rectangle
-    */    
+    /*
+1ère valeur : largeur dans l'espace
+2ème valeur : hauteur dans l'espace
+3ème valeur : largeur du rectangle
+4ème valeur : longueur du rectangle
+*/
     ctx.fillRect(500, 500, 40, 20);
     ctx.fill();
     ctx.restore();
+}
+
+function cercle() {
+    ctx.beginPath();
+    ctx.arc(500, 75, 30, 0, Math.PI * 2, true);  // Cercle extérieur
+    ctx.moveTo(110, 75);
+    ctx.stroke();
 }
 
 function drawBall() {
@@ -52,6 +59,7 @@ function draw() {
     rectangle();
     drawBall();
     drawPaddle();
+    cercle();
 
 
     //La balle ne ressort  plus
